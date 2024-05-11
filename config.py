@@ -69,7 +69,8 @@ available_setting = {
     "claude_uuid": "",
     # claude api key
     "claude_api_key":"",
-    # 通义千问API, 获取方式查看文档 https://help.aliyun.com/document_detail/2587494.html
+    # 通义千问API, 获取方式查看文档 https://help.aliyun.com/document_detail/2712195.html
+    "qwen_api_key": "",
     "qwen_access_key_id": "",
     "qwen_access_key_secret": "",
     "qwen_agent_key": "",
