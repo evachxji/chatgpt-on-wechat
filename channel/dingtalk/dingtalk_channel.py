@@ -26,6 +26,19 @@ from common.singleton import singleton
 from common.time_check import time_checker
 from config import conf
 
+"""
+    本地开启clash代理后，钉钉机器人无法无法使用的问题：
+    对发生报错的 request.get 或 request.post 源码改造，改为：
+        session = requests.Session()
+        session.trust_env = False
+        session.get(....) 或 session.post(....)
+    
+    修改位置如下：
+        dingtalk_stream.stream.DingTalkStreamClient.open_connection
+        dingtalk_stream.stream.DingTalkStreamClient.upload_to_dingtalk
+        dashscope.api_entities.http_request.HttpRequest._handle_request
+        dingtalk_stream.chatbot.ChatbotHandler.reply_text
+"""
 
 class CustomAICardReplier(CardReplier):
     def __init__(self, dingtalk_client, incoming_message):
