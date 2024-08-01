@@ -96,7 +96,9 @@ class MoonshotBot(Bot):
             body["messages"] = session.messages
             # logger.debug("[MOONSHOT_AI] response={}".format(response))
             # logger.info("[MOONSHOT_AI] reply={}, total_tokens={}".format(response.choices[0]['message']['content'], response["usage"]["total_tokens"]))
-            res = requests.post(
+            session = requests.Session()
+            session.trust_env = False
+            res = session.post(
                 self.base_url,
                 headers=headers,
                 json=body

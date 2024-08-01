@@ -16,6 +16,16 @@ from common.log import logger
 from common.token_bucket import TokenBucket
 from config import conf, load_config
 
+"""
+    本地开启clash代理后，机器人无法无法使用的问题：
+    对发生报错的 request.get 或 request.post 源码改造，改为：
+        session = requests.Session()
+        session.trust_env = False
+        session.get(....) 或 session.post(....)
+    
+    修改位置如下：
+        openai.api_requestor.APIRequestor.request_raw
+"""
 
 # OpenAI对话模型API (可用)
 class ChatGPTBot(Bot, OpenAIImage):
